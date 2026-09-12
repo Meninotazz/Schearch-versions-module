@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versões Suportadas - Hospedagem Lotus</title>
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    /* HEADER */
+    header {
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      color: #55ff55;
+      font-size: 36px;
+      margin-bottom: 8px;
+      text-shadow: 0 0 10px rgba(85, 255, 85, 0.3);
+    }
+
+    header p {
+      color: #cccccc;
+      font-size: 16px;
+    }
+
+    /* BARRA DE PESQUISA (JS OPTIMIZATION) */
+    .search-box {
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 20px;
+      background-color: #1a1a1a;
+      border: 1px solid #333333;
+      border-radius: 25px;
+      color: #ffffff;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .search-box input:focus {
+      border-color: #55ff55;
+      box-shadow: 0 0 12px rgba(85, 255, 85, 0.2);
+    }
+
+    /* GRID DE ENGINES */
+    .version-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+
+    /* CARD INDIVIDUAL */
+    .engine-card {
+      background-color: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      border-radius: 14px;
+      padding: 22px;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .engine-card:hover {
+      transform: translateY(-5px);
+      border-color: #55ff55;
+    }
+
+    .engine-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .engine-tag {
+      font-size: 11px;
+      background-color: rgba(255, 153, 0, 0.15);
+      border: 1px solid #ff9900;
+      color: #ff9900;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-weight: normal;
+    }
+
+    .version-info {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+
+    .version-info li {
+      font-size: 14px;
+      color: #dddddd;
+      padding: 6px 0;
+      border-bottom: 1px solid #282828;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .version-info li:last-child {
+      border-bottom: none;
+    }
+
+    .version-info span.value {
+      color: #55ff55;
+      font-weight: bold;
+    }
+
+    .engine-desc {
+      font-size: 12px;
+      color: #aaaaaa;
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+
+    /* BOTÃO VOLTAR */
+    .btn-back {
+      display: inline-block;
+      margin-top: 40px;
+      color: #888888;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .btn-back:hover {
+      color: #55ff55;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header>
+      <h1>📦 Versões e Motores Suportados</h1>
+      <p>Confira a compatibilidade de cada software na Hospedagem Lotus</p>
+    </header>
+
+    <!-- FILTRO DE PESQUISA COM JS -->
+    <div class="search-box">
+      <input type="text" id="searchInput" onkeyup="filtrarVersoes()" placeholder="🔍 Pesquisar por software (ex: Paper, Fabric, 1.20)...">
+    </div>
+
+    <!-- CARDS DE MOTORES E VERSÕES -->
+    <div class="version-grid" id="versionGrid">
+
+      <!-- Paper -->
+      <div class="engine-card">
+        <div>
+          <div class="engine-title">
+            Paper
+            <span class="engine-tag">Plugins</span>
+          </div>
+          <ul class="version-info">
+            <li>Versão Mínima: <span class="value">1.8.8</span></li>
+            <li>Versão Máxima: <span class="value">1.21.x+</span></li>
+            <li>Recomendada: <span class="value">1.20.4</span></li>
+          </ul>
+        </div>
+        <p class="engine-desc">Focado em alto desempenho com suporte total a Bukkit/Spigot plugins.</p>
+      </div>
+
+      <!-- Purpur -->
+      <div class="engine-card">
+        <div>
+          <div class="engine-title">
+            Purpur
+            <span class="engine-tag">Super Performance</span>
+          </div>
+          <ul class="version-info">
+            <li>Versão Mínima: <span class="value">1.16.5</span></li>
+            <li>Versão Máxima: <span class="value">1.21.x+</span></li>
+            <li>Recomendada: <span class="value">1.20.2</span></li>
+          </ul>
+        </div>
+        <p class="engine-desc">Fork otimizado do Paper com infinitas opções de personalização e mecânicas.</p>
+      </div>
+
+      <!-- Leaves -->
+      <div class="engine-card">
+        <div>
+          <div class="engine-title">
+            Leaves
+            <span class="engine-tag">Vanilla Técnico</span>
+          </div>
+          <ul class="version-info">
+            <li>Versão Mínima: <span class="value">1.19.4</span></li>
+            <li>Versão Máxima: <span class="value">1.21.x+</span></li>
+            <li>Recomendada: <span class="value">1.20.4</span></li>
+          </ul>
+        </div>
+        <p class="engine-desc">Desempenho extremo mantendo o comportamento do Vanilla para farms complexas.</p>
+      </div>
+
+      <!-- Fabric -->
+      <div class="engine-card">
+        <div>
+          <div class="engine-title">
+            Fabric
+            <span class="engine-tag">Mods Leves</span>
+          </div>
+          <ul class="version-info">
+            <li>Versão Mínima: <span class="value">1.14.4</span></li>
+            <li>Versão Máxima: <span class="value">1.21.x+</span></li>
+            <li>Recomendada: <span class="value">1.20.1</span></li>
+          </ul>
+        </div>
+        <p class="engine-desc">Ideal para modpacks modernos, leves e otimizações de servidor.</p>
+      </div>
+
+      <!-- Forge / NeoForge -->
+      <div class="engine-card">
+        <div>
+          <div class="engine-title">
+            Forge / NeoForge
+            <span class="engine-tag">Mods Pesados</span>
+          </div>
+          <ul class="version-info">
+            <li>Versão Mínima: <span class="value">1.7.10</span></li>
+            <li>Versão Máxima: <span class="value">1.21.x+</span></li>
+            <li>Recomendada: <span class="value">1.16.5 / 1.20.1</span></li>
+          </ul>
+        </div>
+        <p class="engine-desc">Motor tradicional para os maiores e mais pesados modpacks de Minecraft.</p>
+      </div>
+
+      <!-- Mohist -->
+      <div class="engine-card">
+        <div>
+          <div class="engine-title">
+            Mohist
+            <span class="engine-tag">Mods + Plugins</span>
+          </div>
+          <ul class="version-info">
+            <li>Versão Mínima: <span class="value">1.12.2</span></li>
+            <li>Versão Máxima: <span class="value">1.20.2</span></li>
+            <li>Recomendada: <span class="value">1.16.5 / 1.20.1</span></li>
+          </ul>
+        </div>
+        <p class="engine-desc">Híbrido perfeito para rodar mods de Forge junto com plugins de Paper.</p>
+      </div>
+
+    </div>
+
+    <a href="../" class="btn-back">← Voltar para o site principal</a>
+
+  </div>
+
+  <script>
+    // JS para filtrar os cards dinamicamente na busca
+    function filtrarVersoes() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.getElementsByClassName('engine-card');
+
+      Array.from(cards).forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(input)) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
